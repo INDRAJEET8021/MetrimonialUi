@@ -7,26 +7,36 @@ import {
   Grid,
   Container,
   TextField,
+  Divider,
 } from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SearchIcon from "@mui/icons-material/Search";
 
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("bride");
+  const navigate=useNavigate();
 
   // Profile data for bride and groom
   const profiles = {
     bride: [
       {
+        name: "Samana Singhal",
+        age: 22,
+        location: "Noida",
+        education: "B.Tech in CSE",
+        image:
+          "https://images.pexels.com/photos/1193942/pexels-photo-1193942.jpeg?auto=compress&cs=tinysrgb&w=600",
+      },
+      {
         name: "Sita Kumari",
         age: 25,
         location: "Delhi",
         education: "M.A. in English Literature",
         image:
-          "https://cdn.pixabay.com/photo/2019/04/27/14/00/indian-4160039_1280.jpg",
+          "https://images.pexels.com/photos/1580273/pexels-photo-1580273.jpeg?auto=compress&cs=tinysrgb&w=600",
       },
       {
         name: "Anjali Mehra",
@@ -42,7 +52,7 @@ const HomePage = () => {
         location: "Delhi",
         education: "M.A. in English Literature",
         image:
-          "https://cdn.pixabay.com/photo/2019/04/27/14/00/indian-4160039_1280.jpg",
+          "https://images.pexels.com/photos/1376042/pexels-photo-1376042.jpeg?auto=compress&cs=tinysrgb&w=600",
       },
       {
         name: "Anjali Mehra",
@@ -50,39 +60,39 @@ const HomePage = () => {
         location: "Mumbai",
         education: "B.A. in Fine Arts",
         image:
-          "https://cdn.pixabay.com/photo/2023/12/19/11/16/indian-bride-8457513_1280.jpg",
+          "https://images.pexels.com/photos/3236651/pexels-photo-3236651.jpeg?auto=compress&cs=tinysrgb&w=600",
       },
       {
-        name: "Sita Kumari",
+        name: "Nirpuna Roy",
         age: 25,
         location: "Delhi",
         education: "M.A. in English Literature",
         image:
-          "https://cdn.pixabay.com/photo/2019/04/27/14/00/indian-4160039_1280.jpg",
+          "https://images.pexels.com/photos/730055/pexels-photo-730055.jpeg?auto=compress&cs=tinysrgb&w=600",
       },
       {
-        name: "Anjali Mehra",
+        name: "Urfi Bano",
         age: 28,
         location: "Mumbai",
         education: "B.A. in Fine Arts",
         image:
-          "https://cdn.pixabay.com/photo/2023/12/19/11/16/indian-bride-8457513_1280.jpg",
+          "https://images.pexels.com/photos/1253364/pexels-photo-1253364.jpeg?auto=compress&cs=tinysrgb&w=600",
       },
       {
-        name: "Sita Kumari",
+        name: "Mehul Mishra",
         age: 25,
         location: "Delhi",
         education: "M.A. in English Literature",
         image:
-          "https://cdn.pixabay.com/photo/2019/04/27/14/00/indian-4160039_1280.jpg",
+          "https://images.pexels.com/photos/724258/pexels-photo-724258.jpeg?auto=compress&cs=tinysrgb&w=600",
       },
       {
-        name: "Anjali Mehra",
+        name: "Joy Deb",
         age: 28,
-        location: "Mumbai",
-        education: "B.A. in Fine Arts",
+        location: "Gaziabad",
+        education: "B.Tech in CSE",
         image:
-          "https://cdn.pixabay.com/photo/2023/12/19/11/16/indian-bride-8457513_1280.jpg",
+          "https://images.pexels.com/photos/1580270/pexels-photo-1580270.jpeg?auto=compress&cs=tinysrgb&w=600",
       },
       // Add more bride profiles as needed
     ],
@@ -157,12 +167,17 @@ const HomePage = () => {
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
   };
+  const handleDetail=()=>{
+    navigate('/profile')
+
+
+  }
 
   return (
     <>
       <Navbar />
 
-      <div className="relative w-full h-[70vh] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+      <div className="relative w-full h-[70vh] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">
         <img
           src="https://cdn.pixabay.com/photo/2021/04/05/19/55/wedding-6154519_1280.jpg"
           alt="Matrimony Banner"
@@ -221,7 +236,7 @@ const HomePage = () => {
         <h2 className="text-4xl font-semibold text-gray-800 text-center mb-10">
           Featured Matches
         </h2>
-        <div className="flex justify-center mb-6 gap-8">
+        <div className="flex justify-center mb-6 gap-8 ">
           <Button
             onClick={() => handleCategoryChange("bride")}
             variant={selectedCategory === "bride" ? "contained" : "outlined"}
@@ -261,7 +276,9 @@ const HomePage = () => {
                     boxShadow: "0 8px 20px rgba(0, 0, 0, 0.2)",
                     transform: "translateY(-5px)",
                   },
+                  cursor:'pointer'
                 }}
+                onClick={handleDetail}
               >
                 <img
                   src={profile.image}
@@ -299,6 +316,8 @@ const HomePage = () => {
             </p>
             <p className="font-semibold text-gray-800">Aarti Sharma</p>
           </div>
+          <Divider orientation="vertical" flexItem sx={{ mx: 2 }}  />
+
           <div className="text-center max-w-sm">
             <p className="text-gray-600 mb-4">
               "I found my perfect match here! The process was simple, and the

@@ -5,7 +5,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from "./pages/HomePage";
 import SignIn from "./pages/SignIn";
 import ProfileCreation from "./pages/ProfileCreation";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/ProfileDetailPage";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 function App() {
 
@@ -16,7 +19,7 @@ function App() {
       <Route path="/" element={<HomePage />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<ProfileCreation />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<Dashboard />} />
       </Routes>
      </Router>
     

@@ -2,15 +2,28 @@ import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, Container, Box, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
+import SearchCard from './SearchCard';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [isSearchOpen, setSearchOpen] = useState(false); // Control the modal visibility
+
 
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
     setOpen(open);
+  };
+
+   // Function to open the modal
+   const handleOpenSearch = () => {
+    setSearchOpen(true);
+  };
+
+  // Function to close the modal
+  const handleCloseSearch = () => {
+    setSearchOpen(false);
   };
 
   return (
@@ -45,8 +58,9 @@ const Navbar = () => {
               </Button>
             </Link>
             <Link to="#" className="text-white">
-              <Button variant="text" sx={{ color: '#fff', fontWeight: '500' }}>
-                Search
+              <Button variant="text" sx={{ color: '#fff', fontWeight: '500' }} onClick={handleOpenSearch} className="search-btn">
+                Search         
+
               </Button>
             </Link>
             <Link to="#" className="text-white">
@@ -114,6 +128,8 @@ const Navbar = () => {
           </List>
         </Box>
       </Drawer>
+      {isSearchOpen && <SearchCard handleClose={handleCloseSearch} />}
+
     </AppBar>
   );
 };
